@@ -32,7 +32,10 @@ export default async function mcpToolFilter(pi: ExtensionAPI) {
 
 	try {
 		const parsed = JSON.parse(await readFile(configPath, "utf8")) as { blocked?: unknown };
-		if (!Array.isArray(parsed.blocked) || !parsed.blocked.every((item) => typeof item === "string" && isValidPattern(item))) {
+		if (
+			!Array.isArray(parsed.blocked) ||
+			!parsed.blocked.every((item) => typeof item === "string" && isValidPattern(item))
+		) {
 			throw new Error("expected a JSON object with a string-array 'blocked' property");
 		}
 		blocked = new Set(parsed.blocked);
@@ -69,7 +72,10 @@ export default async function mcpToolFilter(pi: ExtensionAPI) {
 				ctx.ui.notify(
 					blocked.size === 0
 						? "No MCP tools are blocked."
-						: `Blocked MCP tool patterns:\n${[...blocked].sort().map((item) => `• ${item}`).join("\n")}`,
+						: `Blocked MCP tool patterns:\n${[...blocked]
+								.sort()
+								.map((item) => `• ${item}`)
+								.join("\n")}`,
 					"info",
 				);
 				return;
@@ -87,7 +93,10 @@ export default async function mcpToolFilter(pi: ExtensionAPI) {
 			}
 
 			if (action !== "block" && action !== "allow") {
-				ctx.ui.notify("Usage: /tool-filter [list | block <tool-name-or-pattern> | allow <tool-name-or-pattern> | reset]", "warning");
+				ctx.ui.notify(
+					"Usage: /tool-filter [list | block <tool-name-or-pattern> | allow <tool-name-or-pattern> | reset]",
+					"warning",
+				);
 				return;
 			}
 

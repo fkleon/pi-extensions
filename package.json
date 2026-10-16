@@ -1,14 +1,31 @@
 {
-  "name": "pi-extensions",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "peerDependencies": {
-    "@earendil-works/pi-coding-agent": "*"
-  },
-  "pi": {
-    "extensions": [
-      "./extensions/mcp-tool-filter.ts"
-    ]
-  }
+	"name": "@fkleon/pi-extensions",
+	"version": "0.1.0",
+	"description": "Pi coding agent extensions",
+	"type": "module",
+	"keywords": [
+		"pi-package",
+		"pi-extension"
+	],
+	"files": [
+		"extensions/",
+		"biome.json",
+		"README.md"
+	],
+	"scripts": {
+		"check": "biome check .",
+		"lint": "biome lint .",
+		"format": "biome format --write ."
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-coding-agent": "*"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.15"
+	},
+	"pi": {
+		"extensions": [
+			"./extensions/mcp-tool-filter.ts"
+		]
+	}
 }
