@@ -37,6 +37,10 @@ In Pi, use `/tool-filter` to inspect rules, then:
 
 Rule changes are stored in `~/.pi/agent/mcp-tool-filter.json` (or the directory selected by `PI_CODING_AGENT_DIR`).
 
+## `model-prices`
+
+`/model-prices` opens a separate model picker with catalog prices in USD per 1 million tokens (input, output, cache read, and cache write). It sorts by model name (A–Z) by default; press `s` in the TUI to toggle between name and base-input-price order (lowest first). You can also start with `/model-prices price` or `/model-prices name`. Add `all` to include all available models instead of only the current model scope. Models with tiered pricing are marked in the list. Selecting a model switches the active model; the built-in `/model` selector is unchanged.
+
 ## Adding extensions
 
 Place extension source files in `extensions/` and add them to the `pi.extensions` array in `package.json`. For Pi's package format and extension API, see the [official package documentation](https://pi.dev/docs/latest/packages) and [extension documentation](https://pi.dev/docs/latest/extensions). For Biome installation and CLI details, see the [official Biome documentation](https://biomejs.dev/guides/getting-started/).

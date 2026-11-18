@@ -25,7 +25,8 @@
   },
   "pi": {
     "extensions": [
-      "./extensions/mcp-tool-filter.ts"
+      "./extensions/mcp-tool-filter.ts",
+      "./extensions/model-prices.ts"
     ]
   }
 }
