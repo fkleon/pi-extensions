@@ -37,6 +37,12 @@ In Pi, use `/tool-filter` to inspect rules, then:
 
 Rule changes are stored in `~/.pi/agent/mcp-tool-filter.json` (or the directory selected by `PI_CODING_AGENT_DIR`).
 
+## `session-budget`
+
+Tracks cost recorded in the session transcript and pauses agent work at a configurable USD limit. Configure the persistent limit with `/budget set <amount>`, inspect it with `/budget status`, or disable it with `/budget off`. Raising the limit above the already-recorded session cost resumes work. The limit is stored in `~/.pi/agent/session-budget.json` (or the directory selected by `PI_CODING_AGENT_DIR`).
+
+The extension counts recorded assistant, tool, compaction, branch-summary, and cache-warming usage across the session's entries. Since provider usage is generally known only after a response completes and reported costs may be estimates, this is a session guard rather than a hard provider billing cap.
+
 ## Adding extensions
 
 Place extension source files in `extensions/` and add them to the `pi.extensions` array in `package.json`. For Pi's package format and extension API, see the [official package documentation](https://pi.dev/docs/latest/packages) and [extension documentation](https://pi.dev/docs/latest/extensions). For Biome installation and CLI details, see the [official Biome documentation](https://biomejs.dev/guides/getting-started/).
